@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "Commonjs",
+        "target": "ESNext",
+        "sourceMap": true,
+        "allowJs": true,
+        "baseUrl": ".",
+        "paths": {
+            "*": ["*"]
+        },
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "isolatedModules": true,
+        "esModuleInterop": true
+    }
+}
