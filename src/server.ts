@@ -1,14 +1,28 @@
 require("dotenv").config();
-import { ApolloServer } from "apollo-server";
-
-import schema from "@src/schema";
-
-const server = new ApolloServer({ schema });
+import { ApolloServer } from "apollo-server-express";
+import express from "express";
+import client from "@src/client";
+import { typeDefs, resolvers } from "@src/schema";
 
 const PORT = process.env.PORT;
 
-server
-    .listen(PORT)
-    .then(() =>
-        console.log(`🚀 Server is running on http://localhost:${PORT}/ ✅`)
-    );
+const startServer = async () => {
+    const apollo = new ApolloServer({
+        typeDefs,
+        resolvers,
+        context: async () => {
+            return { client };
+        },
+    });
+
+    await apollo.start();
+    const app = express();
+    apollo.applyMiddleware({ app });
+    app.listen({ port: PORT }, () => {
+        console.log(
+            `🚀 Server is running on http://localhost:${PORT}${apollo.graphqlPath} 🚀`
+        );
+    });
+};
+
+startServer();
