@@ -27,14 +27,14 @@ const resolvers: Resolvers = {
                         };
                 }
                 //TODO 2: 비밀번호 변조 (hash=> password, saltRound)
-                const modulatedPassword = await bcrypt.hash(password, 10);
+                const hashedPassword = await bcrypt.hash(password, 10);
 
                 //TODO 3: 유저 정보 저장
                 await client.user.create({
                     data: {
                         username,
                         email,
-                        password: modulatedPassword,
+                        password: hashedPassword,
                     },
                 });
                 return {
