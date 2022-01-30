@@ -1,5 +1,6 @@
 import * as bcrypt from "bcrypt";
 import { Resolvers, User } from "@src/types";
+import { ErrorMessage } from "@src/constants";
 
 const resolvers: Resolvers = {
     Mutation: {
@@ -18,12 +19,12 @@ const resolvers: Resolvers = {
                     if (isExistUser.username === username)
                         return {
                             ok: false,
-                            error: "이미 사용중인 닉네임 입니다 ",
+                            error: ErrorMessage.USER_EXISTS,
                         };
                     else
                         return {
                             ok: false,
-                            error: "이미 사용중인 이메일 입니다 ",
+                            error: ErrorMessage.EMAIL_EXISTS,
                         };
                 }
                 //TODO 2: 비밀번호 변조 (hash=> password, saltRound)
@@ -43,7 +44,7 @@ const resolvers: Resolvers = {
             } catch (e) {
                 return {
                     ok: false,
-                    error: "계정을 생성할 수 없습니다.",
+                    error: ErrorMessage.USER_CANT_CREATE,
                 };
             }
         },
