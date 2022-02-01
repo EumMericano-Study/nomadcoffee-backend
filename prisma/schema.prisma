@@ -22,6 +22,41 @@ model User {
     followers      User[]  @relation("FollowRelation", references: [id])
     following      User[]  @relation("FollowRelation", references: [id])
 
+    createAt   DateTime     @default(now())
+    updatedAt  DateTime     @updatedAt
+    CoffeeShop CoffeeShop[]
+}
+
+model CoffeeShopPhoto {
+    id           Int        @id @default(autoincrement())
+    url          String     @unique
+    shop         CoffeeShop @relation(fields: [coffeeShopId], references: [id])
+    coffeeShopId Int
+
+    createAt  DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model CoffeeShop {
+    id         Int               @id @default(autoincrement())
+    name       String
+    latitude   String?
+    longitude  String?
+    user       User              @relation(fields: [userId], references: [id])
+    userId     Int
+    photos     CoffeeShopPhoto[]
+    categories Category[]
+
+    createAt  DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Category {
+    id         Int          @id @default(autoincrement())
+    name       String       @unique
+    slug       String?
+    shops      CoffeeShop[]
+
     createAt  DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
