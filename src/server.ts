@@ -15,6 +15,7 @@ const startServer = async () => {
         typeDefs,
         resolvers,
         playground: true,
+        introspection: true,
         context: async ({ req }) => {
             return {
                 loggedInUser: await getUserByAuth(req.headers.authorization),
