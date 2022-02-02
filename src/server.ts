@@ -1,5 +1,5 @@
 require("dotenv").config();
-import { ApolloServer } from "apollo-server-express";
+import { ApolloServer, Config, ExpressContext } from "apollo-server-express";
 import express from "express";
 import logger from "morgan";
 import { graphqlUploadExpress } from "graphql-upload";
@@ -14,6 +14,7 @@ const startServer = async () => {
     const apollo = new ApolloServer({
         typeDefs,
         resolvers,
+        playground: true,
         context: async ({ req }) => {
             return {
                 loggedInUser: await getUserByAuth(req.headers.authorization),
@@ -21,7 +22,7 @@ const startServer = async () => {
                 client,
             };
         },
-    });
+    } as Config<ExpressContext>);
 
     await apollo.start();
 
