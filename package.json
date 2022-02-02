@@ -5,7 +5,9 @@
     "scripts": {
         "dev": "nodemon --exec ts-node -r tsconfig-paths/register src/server --ext ts,js",
         "migrate": "npx prisma migrate dev",
-        "studio": "npx prisma studio"
+        "studio": "npx prisma studio",
+        "build": "npx tsc && npx tsc-alias",
+        "start": "node build/server"
     },
     "repository": {
         "type": "git",
@@ -31,6 +33,7 @@
         "morgan": "^1.10.0",
         "prettier-plugin-prisma": "^3.8.0",
         "ts-node": "^10.4.0",
+        "tsc-alias": "^1.5.0",
         "tsconfig-paths": "^3.12.0",
         "typescript": "^4.5.5"
     },

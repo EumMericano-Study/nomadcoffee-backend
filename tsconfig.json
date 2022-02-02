@@ -1,17 +1,15 @@
 {
     "compilerOptions": {
         "module": "Commonjs",
-        "target": "ESNext",
+        "target": "es5",
         "sourceMap": true,
         "allowJs": true,
         "baseUrl": ".",
         "paths": {
             "@src/*": ["src/*"]
         },
-        "declaration": true,
-        "emitDeclarationOnly": true,
-        "isolatedModules": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "outDir": "build"
     },
     "include": ["./src/**/*"]
 }
