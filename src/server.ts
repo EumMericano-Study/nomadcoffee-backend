@@ -1,5 +1,5 @@
 require("dotenv").config();
-import { ApolloServer, Config, ExpressContext } from "apollo-server-express";
+import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import logger from "morgan";
 import { graphqlUploadExpress } from "graphql-upload";
@@ -7,6 +7,7 @@ import { graphqlUploadExpress } from "graphql-upload";
 import client from "@src/client";
 import { typeDefs, resolvers } from "@src/schema";
 import { getUserByAuth, protectedResolver } from "@src/users/user.utils";
+import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 
 const PORT = process.env.PORT;
 
@@ -14,7 +15,7 @@ const startServer = async () => {
     const apollo = new ApolloServer({
         typeDefs,
         resolvers,
-        playground: true,
+        plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
         introspection: true,
         context: async ({ req }) => {
             return {
@@ -23,7 +24,7 @@ const startServer = async () => {
                 client,
             };
         },
-    } as Config<ExpressContext>);
+    });
 
     await apollo.start();
 
