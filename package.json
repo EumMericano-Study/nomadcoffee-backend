@@ -20,10 +20,10 @@
     },
     "homepage": "https://github.com/EumMericano-Study/nomadcoffee-backend#readme",
     "dependencies": {
-        "@types/graphql-upload": "^8.0.10",
         "@graphql-tools/load-files": "^6.5.3",
         "@graphql-tools/merge": "^8.2.1",
         "@prisma/client": "^3.8.1",
+        "@types/graphql-upload": "^8.0.10",
         "apollo-server": "^3.6.2",
         "apollo-server-express": "^3.6.2",
         "bcrypt": "^5.0.1",
@@ -44,7 +44,6 @@
         "@types/graphql-upload": "^8.0.10",
         "@types/jsonwebtoken": "^8.5.8",
         "@types/morgan": "^1.9.3",
-        "graphql-upload": "^13.0.0",
         "nodemon": "^2.0.15",
         "prisma": "^3.8.1"
     },
