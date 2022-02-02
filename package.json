@@ -46,5 +46,8 @@
         "graphql-upload": "^13.0.0",
         "nodemon": "^2.0.15",
         "prisma": "^3.8.1"
+    },
+    "resolutions": {
+        "graphql-upload": "^13.0.0"
     }
 }
