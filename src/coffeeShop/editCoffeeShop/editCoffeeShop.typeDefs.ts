@@ -1,10 +1,6 @@
 import { gql } from "apollo-server-express";
 
 export default gql`
-  type EditCoffeeShopResult {
-    ok: Boolean!
-    error: String
-  }
   type Mutation {
     editCoffeeShop(
       id: Int!
@@ -12,6 +8,6 @@ export default gql`
       latitude: String
       longitude: String
       categories: [String]
-    ): EditCoffeeShopResult!
+    ): MutationResponse!
   }
 `;
