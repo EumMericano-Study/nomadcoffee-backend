@@ -1,17 +1,24 @@
 import { createWriteStream } from "fs";
 import { Upload } from "@src/types";
 
-const imageMapper = (image: Upload, userId: number) => {
+const changeImageToUrl = (image: Upload) => {
   const { filename, createReadStream } = image;
-
   const readStream = createReadStream();
 
-  const newFileName = `${userId}${Date.now()}${filename}`;
+  const newFileName = `${Math.random()
+    .toString(36)
+    .substring(2, 11)}-${Date.now()}-${filename}`;
+
   const writeStream = createWriteStream(
     process.cwd() + "/src/uploads/images/" + newFileName
   );
   readStream.pipe(writeStream);
-  const url = `http://localhost:4000/static/${newFileName}`;
+
+  return `http://localhost:4000/static/${newFileName}`;
+};
+
+const imageMapper = (image: Upload) => {
+  const url = changeImageToUrl(image);
 
   return {
     where: { url: url },

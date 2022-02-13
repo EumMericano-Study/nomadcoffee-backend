@@ -32,8 +32,7 @@ const resolver: Resolvers = {
                 .filter((image) => image !== null)
                 .map(async (image) => {
                   const asyncImage = await image;
-                  if (asyncImage)
-                    return imageMapper(asyncImage, loggedInUser.id);
+                  if (asyncImage) return imageMapper(asyncImage);
                 })
             );
           }
