@@ -26,6 +26,7 @@
         "@types/graphql-upload": "^8.0.10",
         "apollo-server": "^3.6.2",
         "apollo-server-express": "^3.6.2",
+        "aws-sdk": "^2.1073.0",
         "bcrypt": "^5.0.1",
         "dotenv": "^14.2.0",
         "express": "^4.17.2",

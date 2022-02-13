@@ -2,7 +2,7 @@ import { Resolvers, CoffeeShop, Upload } from "@src/types";
 import { ErrorMessage } from "@src/constants";
 import { protectedResolver } from "@src/users/user.utils";
 
-import imageMapper from "../coffee.utils";
+import { imageMapper } from "../coffeeShop.utils";
 
 interface Args extends CoffeeShop {
   categories: string[];
