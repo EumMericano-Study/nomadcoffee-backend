@@ -30,8 +30,8 @@ model User {
 model CoffeeShopPhoto {
     id           Int        @id @default(autoincrement())
     url          String     @unique
-    shop         CoffeeShop @relation(fields: [coffeeShopId], references: [id])
-    coffeeShopId Int
+    shop         CoffeeShop? @relation(fields: [coffeeShopId], references: [id])
+    coffeeShopId Int?
 
     createAt  DateTime @default(now())
     updatedAt DateTime @updatedAt
